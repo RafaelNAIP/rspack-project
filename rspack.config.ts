@@ -47,6 +47,7 @@ export default withZephyr()({
 			}
 		]
 	},
+	// @ts-expect-error Below are non-blocking error and we are working on improving them
 	plugins: [
 		new rspack.HtmlRspackPlugin({
 			template: "./index.html"
@@ -55,7 +56,9 @@ export default withZephyr()({
 	].filter(Boolean),
 	optimization: {
 		minimizer: [
+			// @ts-expect-error
 			new rspack.SwcJsMinimizerRspackPlugin(),
+			// @ts-expect-error
 			new rspack.LightningCssMinimizerRspackPlugin({
 				minimizerOptions: { targets }
 			})
